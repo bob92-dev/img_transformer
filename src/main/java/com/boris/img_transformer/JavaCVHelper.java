@@ -17,24 +17,34 @@ public class JavaCVHelper {
 
     public void exempleBlurFile() {
 
-        // apliquer un filtre
+        // appliquer un filtre
         File f = new File("imgs/test.jpg");
+        // ensuite il lit l'image
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
+        // il lui applique le filtre
         image = filterBlur(image);
 
 
-        //enregistrer l'image'
+        //enregistrer l'image
+            // creation d'une nouvelle direction pour la destination du fichier
         File outputDir = new File("output");
+        // dans la nouveau dossier, il enregistre le fichioer de sortie( apres application du filtre)
+        // en deuxiéme argument le nom du nouveau fichier
         File outputFile = new File(outputDir, "result.jpg");
+        //ensuite il écrit le chemin absolu, et l'image
         opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
     }
 
 
     // ca c'ets un flou
     public Mat filterBlur(Mat image) {
+        // attention taille impaire, obligatoirement
         int size = 3;
+        // création d'une copie de l'image
         Mat result = image.clone();
+        // une image, son clone, et la taille donnée plus haut.
         GaussianBlur(image, result, new Size(size, size), 0);
+        // il retourne le result donc le fichier de sortie modifié
         return result;
     }
 
