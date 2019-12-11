@@ -10,17 +10,35 @@ import java.nio.file.FileAlreadyExistsException;
 public class ToolsGestion {
 
 
-    /*public void GestionFile(File filetest) throws FormatException , FilterException{
+    public void GestionFile() throws FormatException, FilterException, CreateException {
 
+        File fileDosRec = new File("src/ImageRessource");
+        File fileDosFilt = new File("src/ImageFiltered");
 
-        if (!filetest.exists()) {
+        if (!fileDosRec.exists()) {
             try {
-                filetest.createNewFile();
+
+                fileDosRec.createNewFile();
+
+            } catch (CreateException e) {
+                throw new CreateException(" Probléme création dossier ");
             } catch (IOException e) {
-                throw new Exception("Probléme ");
+                e.printStackTrace();
             }
         }
-    }*/
+        if(!fileDosFilt.exists()){
+            try {
+
+                fileDosFilt.createNewFile();
+
+            } catch (CreateException e) {
+                throw new CreateException(" Probléme création dossier ");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     /**
      * this function open file and create name for him
