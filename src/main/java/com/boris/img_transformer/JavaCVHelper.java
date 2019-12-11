@@ -1,6 +1,5 @@
 package com.boris.img_transformer;
 
-import jdk.internal.org.jline.terminal.Size;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 import org.bytedeco.opencv.opencv_core.Size;
