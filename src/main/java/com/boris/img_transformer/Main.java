@@ -1,6 +1,10 @@
 package com.boris.img_transformer;
 
+import org.bytedeco.opencv.opencv_core.Mat;
+
 public class Main {
+
+
     public static void main(String[] args) {
 
 
@@ -8,8 +12,22 @@ public class Main {
 
         // dans les dossiers vérifier les images
 
-       ToolsGestion test = new ToolsGestion();
-       
+       ToolsGestion recupeImage = new ToolsGestion();
+
+       FilterGrayscale Story1_noir_blanc = new FilterGrayscale();
+
+       //STORY 1
+
+        //openImage
+       Mat Imageopened = recupeImage.OpenImage("antoine");
+
+       // filtre noir blanc
+
+       Mat FilteredImage =Story1_noir_blanc.filterGrayscale(Imageopened);
+
+       // image recording
+
+        recupeImage.create_In_Directory(FilteredImage,"antoine_N_B");
 
 
     }
