@@ -8,9 +8,6 @@ public class Main {
     public static void main(String[] args) {
 
 
-        // vérification de l'exitance des deux dossiers !
-
-        // dans les dossiers vérifier les images
 
        ToolsGestion recupeImage = new ToolsGestion();
 
@@ -25,9 +22,47 @@ public class Main {
 
        Mat FilteredImage =Story1_noir_blanc.filterGrayscale(Imageopened);
 
-       // image recording
+        // image recording
 
         recupeImage.create_In_Directory(FilteredImage,"antoine_N_B");
+
+        // STORY 2
+
+        ToolsGestion recupeImage2 = new ToolsGestion();
+
+        FilterBlur Story_2_Blur = new FilterBlur();
+
+        //openImage
+
+        Mat Imageopened2 = recupeImage2.OpenImage("ted");
+
+        // filtre noir blanc
+
+        Mat FilteredBlur =Story_2_Blur.filterBlur(Imageopened2);
+
+        // image recording
+
+        recupeImage2.create_In_Directory(FilteredBlur,"ted_Blur");
+
+
+        // STORY 3
+
+        ToolsGestion recupeImage3 = new ToolsGestion();
+
+        FilterDilate Story_3 = new FilterDilate();
+
+        //openImage
+
+        Mat Imageopened3 = recupeImage2.OpenImage("image 33");
+
+        // filtre dilate
+
+        Mat FilteredDilate =Story_3.filterDilate(Imageopened3);
+
+        // image recording
+
+        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");
+
 
 
     }
