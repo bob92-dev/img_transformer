@@ -7,7 +7,6 @@ import org.opencv.core.CvType;
 import org.opencv.imgproc.Imgproc;
 
 
-
 import java.io.File;
 
 import static org.bytedeco.opencv.global.opencv_imgproc.*;
@@ -17,7 +16,7 @@ public class JavaCVHelper {
     public void exempleBlurFile() {
 
         // appliquer un filtre
-        File f = new File("imgs/test.jpg");
+        File f = new File("src/ImageRessource/ted.jpg");
         // ensuite il lit l'image
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
         // il lui applique le filtre
@@ -26,7 +25,7 @@ public class JavaCVHelper {
 
         //enregistrer l'image
             // creation d'une nouvelle direction pour la destination du fichier
-        File outputDir = new File("output");
+        File outputDir = new File("src/ImageFiltered");
         // dans la nouveau dossier, il enregistre le fichioer de sortie( apres application du filtre)
         // en deuxiéme argument le nom du nouveau fichier
         File outputFile = new File(outputDir, "result.jpg");
@@ -35,10 +34,10 @@ public class JavaCVHelper {
     }
 
 
-    // ca c'ets un flou
+    // ca c'est un flou
     public Mat filterBlur(Mat image) {
         // attention taille impaire, obligatoirement
-        int size = 3;
+        int size = 31;
         // création d'une copie de l'image
         Mat result = image.clone();
         // une image, son clone, et la taille donnée plus haut.
