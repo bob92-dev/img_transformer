@@ -8,9 +8,8 @@ public class Main {
 
         // dans les dossiers vérifier les images
 
-        JavaCVHelper test = new JavaCVHelper();
-
-        test.exempleBlurFile();
+       ToolsGestion test = new ToolsGestion();
+       
 
 
     }

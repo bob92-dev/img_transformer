@@ -24,13 +24,35 @@ public class ToolsGestion {
         }
     }
 
-    public  Mat OpenImage ( String name) {
-        // crée un objet file
-        File f = new File("src/ImageRessource/" +name+ ".jpg");
-
-        // ensuite il lit l'image
+    /**
+     * this function open file and create name for him
+     * @param name name of file Mat
+     * @return
+     */
+    public Mat OpenImage(String name) {
+        // open file in src/ImageRessource/+ name + ".jpg
+        File f = new File("src/ImageRessource/" + name + ".jpg");
+        // give Absolute Path
         Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
-
         return image;
+    }
+
+
+
+    public void create_In_Directory(Mat image,String name_file) {
+        //enregistrer l'image
+        // creation d'une nouvelle direction pour la destination du fichier
+        File outputDir = new File("src/ImageFiltered");
+
+        // dans la nouveau dossier, il enregistre le fichioer de sortie( apres application du filtre)
+        // en deuxiéme argument le nom du nouveau fichier
+
+
+        File outputFile = new File(outputDir, name_file+".jpg");
+
+        //ensuite il écrit le chemin absolu, et l'image
+
+        opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
+
     }
 }
