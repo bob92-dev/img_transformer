@@ -5,13 +5,13 @@ import org.bytedeco.opencv.opencv_core.Mat;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception,FormatException,FilterException {
 
 
 
        ToolsGestion recupeImage = new ToolsGestion();
 
-       FilterGrayscale Story1_noir_blanc = new FilterGrayscale();
+       IFilter Story1_noir_blanc = new FilterGrayscale();
 
        //STORY 1
 
@@ -20,7 +20,8 @@ public class Main {
 
        // filtre noir blanc
 
-       Mat FilteredImage =Story1_noir_blanc.filterGrayscale(Imageopened);
+
+       Mat FilteredImage =Story1_noir_blanc.filter_function(Imageopened);
 
         // image recording
 
@@ -30,7 +31,7 @@ public class Main {
 
         ToolsGestion recupeImage2 = new ToolsGestion();
 
-        FilterBlur Story_2_Blur = new FilterBlur();
+        IFilter Story_2_Blur = new FilterBlur(31);
 
         //openImage
 
@@ -38,7 +39,7 @@ public class Main {
 
         // filtre noir blanc
 
-        Mat FilteredBlur =Story_2_Blur.filterBlur(Imageopened2);
+        Mat FilteredBlur =Story_2_Blur.filter_function(Imageopened2);
 
         // image recording
 
@@ -49,7 +50,7 @@ public class Main {
 
         ToolsGestion recupeImage3 = new ToolsGestion();
 
-        FilterDilate Story_3 = new FilterDilate();
+        IFilter Story_3 = new FilterDilate(8);
 
         //openImage
 
@@ -57,12 +58,11 @@ public class Main {
 
         // filtre dilate
 
-        Mat FilteredDilate =Story_3.filterDilate(Imageopened3);
+        Mat FilteredDilate =Story_3.filter_function(Imageopened3);
 
         // image recording
 
         recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");
-
 
 
     }
