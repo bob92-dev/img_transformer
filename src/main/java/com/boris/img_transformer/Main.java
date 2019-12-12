@@ -2,6 +2,9 @@ package com.boris.img_transformer;
 
 import org.bytedeco.opencv.opencv_core.Mat;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class Main {
 
 
@@ -63,6 +66,13 @@ public class Main {
         // image recording
 
         recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");
+
+        ToolsGestion testDeDossier = new ToolsGestion();
+
+        ArrayList<ImageLog> value = testDeDossier.GestionFileRessource();
+
+        ImageFilter filtertest = new ImageFilter(31,value,"FilterBlur");
+
 
 
     }

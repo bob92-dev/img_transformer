@@ -1,42 +1,83 @@
 package com.boris.img_transformer;
 
+import javafx.scene.AmbientLight;
 import org.bytedeco.opencv.global.opencv_imgcodecs;
 import org.bytedeco.opencv.opencv_core.Mat;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ToolsGestion {
 
+    public void GestionFileFilter(ArrayList<ImageLog> filterImage) throws FormatException, FilterException, CreateException {
 
-    public void GestionFile() throws FormatException, FilterException, CreateException {
-
-        File fileDosRec = new File("src/ImageRessource");
         File fileDosFilt = new File("src/ImageFiltered");
 
-        if (!fileDosRec.exists()) {
-            try {
-
-                fileDosRec.createNewFile();
-
-            } catch (CreateException e) {
-                throw new CreateException(" Probléme création dossier ");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         if(!fileDosFilt.exists()){
-            try {
+                // tu le crée
+                fileDosFilt.mkdirs();
 
-                fileDosFilt.createNewFile();
+                // tu ajoue l'image que je t'es donnée filtrer
 
-            } catch (CreateException e) {
-                throw new CreateException(" Probléme création dossier ");
-            } catch (IOException e) {
-                e.printStackTrace();
+            for(int i =0;i<filterImage.size();i++){
+
+                ToolsGestion stoked = new ToolsGestion();
+
+                stoked.create_In_Directory(filterImage.get(i).getImage(),filterImage.get(i).getNameFile());
+
+            }
+
+        }else{
+
+            for(int i =0;i<filterImage.size();i++){
+
+                ToolsGestion stoked = new ToolsGestion();
+
+                stoked.create_In_Directory(filterImage.get(i).getImage(),filterImage.get(i).getNameFile());
+
+            }
+
+            // tu ajoue l'image que je t'es donnée filtrer
+        }
+    }
+
+    public ArrayList<ImageLog> GestionFileRessource() throws FormatException, FilterException, CreateException {
+
+        ArrayList<ImageLog> Imagelog =new  ArrayList<>();
+
+
+        File fileDosRec = new File("src/ImageRessource");
+
+        if (!fileDosRec.exists()) {
+
+                fileDosRec.mkdirs();
+
+                return Imagelog ;
+        }else{
+            if(fileDosRec.length()== 0){
+                System.out.println("faux");
+
+            }else{
+
+                File[] ListeDoc = fileDosRec.listFiles();
+
+                for(int i=0;i<ListeDoc.length;i++){
+
+                    Mat image = opencv_imgcodecs.imread(ListeDoc[i].getAbsolutePath());
+
+                    ImageLog log =new ImageLog(ListeDoc[i],image);
+
+                    Imagelog.add(log);
+
+                }
             }
         }
+        return Imagelog;
     }
 
 
@@ -55,6 +96,7 @@ public class ToolsGestion {
             }
             // give Absolute Path
             Mat image = opencv_imgcodecs.imread(f.getAbsolutePath());
+
             return image;
 
         }catch (FormatException e){
@@ -80,7 +122,7 @@ public class ToolsGestion {
             opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
 
         }catch (Exception e ){
-            throw new FormatException("");
+            throw new FormatException(" ");
         }
 
     }
