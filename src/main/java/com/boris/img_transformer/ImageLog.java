@@ -11,11 +11,13 @@ public class ImageLog {
     private File fileName;
     private Mat matImage;
     private String nameStringFile;
+    private String filterValuethis = " No filter ";
 
-    public ImageLog(File nameSource, Mat image) {
+    public ImageLog(File nameSource, Mat image,String filterValuethis) {
         this.fileName = nameSource;
         this.matImage = image;
         this.nameStringFile = nameSource.getName();
+        this.filterValuethis = filterValuethis;
     }
 
     public File getFileName() {
@@ -28,5 +30,9 @@ public class ImageLog {
 
     public String getNameStringFile() {
         return nameStringFile;
+    }
+
+    public String getFilterValuethis() {
+        return filterValuethis;
     }
 }

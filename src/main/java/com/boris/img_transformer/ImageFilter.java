@@ -19,6 +19,8 @@ public class ImageFilter {
 
         IFilter Grayscale = new FilterGrayscale();
 
+        LogInformation valuefilterforpicture = new LogInformation();
+
         ArrayList<ImageLog> value_filter = new ArrayList<>();
 
 
@@ -27,10 +29,11 @@ public class ImageFilter {
             case 1 :
                 for (int i =0;i<imageFilter.size();i++) {
                     Mat test = Grayscale.filter_function(imageFilter.get(i).getMatImage());
-                    System.out.println("ici "+i);
-                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test,"Grayscale");
+                    valuefilterforpicture.checkLog(finish);
                     value_filter.add(finish);
                 }
+
                 testtools.GestionFileFilter(value_filter);
                 break;
 
@@ -38,7 +41,8 @@ public class ImageFilter {
 
                 for (int i =0;i<imageFilter.size();i++) {
                     Mat test = Dilate.filter_function(imageFilter.get(i).getMatImage());
-                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test,"Dilate");
+                    valuefilterforpicture.checkLog(finish);
                     value_filter.add(finish);
                 }
                 testtools.GestionFileFilter(value_filter);
@@ -49,7 +53,8 @@ public class ImageFilter {
                 for (int i =0;i<imageFilter.size();i++){
 
                     Mat test = Blur.filter_function(imageFilter.get(i).getMatImage());
-                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test,"Blur");
+                    valuefilterforpicture.checkLog(finish);
                     value_filter.add(finish);
 
                 }

@@ -94,7 +94,7 @@ public class ToolsGestion {
 
                     Mat image = opencv_imgcodecs.imread(ListeDoc[i].getAbsolutePath());
 
-                    ImageLog log =new ImageLog(ListeDoc[i],image);
+                    ImageLog log =new ImageLog(ListeDoc[i],image,null);
 
                     Imagelog.add(log);
 

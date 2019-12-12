@@ -4,16 +4,82 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
-import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 
 public class Main {
 
 
-    public static void main(String[] args) throws Exception,FormatException,FilterException {
+    public static void main(String[] args) throws Exception, FormatException, FilterException {
+
+
+
+
+
+
+        Options options = new Options();
+        options.addOption("h",false, "help");
+        options.addOption("i",true, "input <directory>");
+        options.addOption("o","ouput -dir",false, "output <directory>");
+
+
+        // story 6 : ETAPE 2 : creation du parseur
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options,args);
+
+
+
+        //story 6 : ETAPE 3 : récupération et traitement des résultats
+
+        if(cmd.hasOption("h")) {
+            System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
+
+        }
+        if (cmd.hasOption("i")){
+            System.out.println("this is a test command "+ cmd.getOptionValues("i"));
+
+        }
+
+
+
+
+        Options options = new Options();
+
+        options.addOption("h", false, "help");
+        options.addOption("i", true, "input <directory>");
+        options.addOption("o", "ouput -dir", true, "output <directory>");
+
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options,args);
+
+        System.out.println((cmd.getOptionValue("i")));
+
+
+
+        switch (cmd.) {
+            default:
+                System.out.println("echec");
+
+            case "h":
+
+                System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
+
+                break;
+
+            case "i":
+                System.out.println("i");
+                break;
+
+            case "o":
+                System.out.println("o");
+                break;
+
+        }
+
+    }
+
+
 
 
         // story 6 : ETAPE 1 : CLI => creation des options
@@ -21,7 +87,6 @@ public class Main {
         options.addOption("h",false, "help");
         options.addOption("i",true, "input <directory>");
         options.addOption("o","ouput -dir",true, "output <directory>");
-
 
 
         // story 6 : ETAPE 2 : creation du parseur
@@ -57,7 +122,7 @@ public class Main {
 
 
 
-/*
+
        ToolsGestion recupeImage = new ToolsGestion();
 
        IFilter Story1_noir_blanc = new FilterGrayscale();
@@ -119,20 +184,17 @@ public class Main {
         // STORY 5
 
 
-        ToolsGestion testDeDossier = new ToolsGestion();
+        //ToolsGestion testDeDossier = new ToolsGestion();
 
-        ArrayList<ImageLog> value = testDeDossier.GestionFileRessource();
+        // ArrayList<ImageLog> value = testDeDossier.GestionFileRessource();
 
-        //ImageFilter filtertest = new ImageFilter(31,value,"FilterBlur");
+        // ImageFilter filtertest = new ImageFilter(31, value, 1);
 
 
-        //ImageFilter filtertest1 = new ImageFilter(8,value,"2");
+        //ImageFilter filtertest1 = new ImageFilter(8,value,2);
 
 
         //ImageFilter filtertest2 = new ImageFilter(31,value,3);
 
 
-
-
     }
-}
