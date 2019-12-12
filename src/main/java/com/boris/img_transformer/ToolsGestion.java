@@ -14,47 +14,69 @@ import java.util.Map;
 
 public class ToolsGestion {
 
+    /**
+     * this fonction check discovery and add to
+     * @param filterImage this list of picture output
+     * @throws FormatException check format
+     * @throws FilterException check filter possibility
+     * @throws CreateException check if create file
+     */
+
     public void GestionFileFilter(ArrayList<ImageLog> filterImage) throws FormatException, FilterException, CreateException {
 
+        //this absolute path
         File fileDosFilt = new File("src/ImageFiltered");
 
+        // check existance of discovery
+
         if(!fileDosFilt.exists()){
-                // tu le crée
+                // create discovery
                 fileDosFilt.mkdirs();
 
-                // tu ajoue l'image que je t'es donnée filtrer
+                // add picture in discovery
 
             for(int i =0;i<filterImage.size();i++){
 
                 ToolsGestion stoked = new ToolsGestion();
 
-                stoked.create_In_Directory(filterImage.get(i).getImage(),filterImage.get(i).getNameFile());
+                stoked.create_In_Directory(filterImage.get(i).getMatImage(),filterImage.get(i).getNameStringFile());
 
             }
 
         }else{
 
+            // add picture in discovery
             for(int i =0;i<filterImage.size();i++){
 
                 ToolsGestion stoked = new ToolsGestion();
 
-                stoked.create_In_Directory(filterImage.get(i).getImage(),filterImage.get(i).getNameFile());
+                stoked.create_In_Directory(filterImage.get(i).getMatImage(),filterImage.get(i).getNameStringFile());
 
             }
-
-            // tu ajoue l'image que je t'es donnée filtrer
         }
     }
 
+    /**
+     * this fonction check discovery ( exist or not exist that is the question )
+     * @return
+     * @throws FormatException check format
+     * @throws FilterException check filter possibility
+     * @throws CreateException check if create file
+     */
+
     public ArrayList<ImageLog> GestionFileRessource() throws FormatException, FilterException, CreateException {
+
+
+        //this absolute path
 
         ArrayList<ImageLog> Imagelog =new  ArrayList<>();
 
-
+    // check existance of discovery
         File fileDosRec = new File("src/ImageRessource");
 
         if (!fileDosRec.exists()) {
 
+            // create discovery
                 fileDosRec.mkdirs();
 
                 return Imagelog ;
@@ -64,8 +86,10 @@ public class ToolsGestion {
 
             }else{
 
+                // take all file in discovery and
                 File[] ListeDoc = fileDosRec.listFiles();
 
+                // change elements in discovery of ImageLog
                 for(int i=0;i<ListeDoc.length;i++){
 
                     Mat image = opencv_imgcodecs.imread(ListeDoc[i].getAbsolutePath());
@@ -104,7 +128,12 @@ public class ToolsGestion {
         }
     }
 
-
+    /**
+     * this function move file between discovery
+     * @param image this file Mat
+     * @param name_file name of file
+     * @throws FormatException
+     */
     public void create_In_Directory(Mat image,String name_file) throws FormatException {
 
         //enregistrer l'image

@@ -8,25 +8,25 @@ import java.util.Map;
 
 public class ImageLog {
 
-    private File name;
-    private Mat image;
-    private String nameFile;
+    private File fileName;
+    private Mat matImage;
+    private String nameStringFile;
 
     public ImageLog(File nameSource, Mat image) {
-        this.name = nameSource;
-        this.image = image;
-        this.nameFile = nameSource.getName();
+        this.fileName = nameSource;
+        this.matImage = image;
+        this.nameStringFile = nameSource.getName();
     }
 
-    public Mat getImage() {
-        return this.image;
+    public File getFileName() {
+        return fileName;
     }
 
-    public File getName() {
-        return this.name;
+    public Mat getMatImage() {
+        return matImage;
     }
 
-    public String getNameFile() {
-        return nameFile;
+    public String getNameStringFile() {
+        return nameStringFile;
     }
 }

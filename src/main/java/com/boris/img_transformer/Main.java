@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws Exception,FormatException,FilterException {
 
 
-
+/*
        ToolsGestion recupeImage = new ToolsGestion();
 
        IFilter Story1_noir_blanc = new FilterGrayscale();
@@ -65,26 +65,28 @@ public class Main {
 
         // image recording
 
-        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");
+        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");*/
+
+
+//===================================================================================
+
+        // STORY 5
+
 
         ToolsGestion testDeDossier = new ToolsGestion();
 
         ArrayList<ImageLog> value = testDeDossier.GestionFileRessource();
 
-        ImageFilter filtertest = new ImageFilter(31,value,"FilterBlur");
+        //ImageFilter filtertest = new ImageFilter(31,value,"FilterBlur");
 
 
+        //ImageFilter filtertest1 = new ImageFilter(8,value,"2");
 
-    }
-}
 
-/*
-        L'image est ouverte avec JavaCV (avec la classe Mat)
-    L'image est convertie en N&B
-    L'image est enregistrée dans un nouveau fichier
+        //ImageFilter filtertest2 = new ImageFilter(31,value,3);
+
 
 
 
     }
 }
-*/

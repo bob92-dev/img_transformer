@@ -6,37 +6,56 @@ import java.util.ArrayList;
 
 public class ImageFilter {
 
-    private ImageLog image;
     private ToolsGestion filter=new ToolsGestion();
-    private ArrayList<ImageLog> imageFilter = new ArrayList<>();
-    private ArrayList<ImageLog> imageLogsFilter = new ArrayList<>();
 
-    public ImageFilter( int size, ArrayList<ImageLog> imageFilter, String filter_fonction) throws Exception {
+    public ImageFilter( int size, ArrayList<ImageLog> imageFilter, int filter_fonction) throws Exception {
+
+
+        ToolsGestion testtools = new ToolsGestion();
+
+        IFilter Blur = new FilterBlur(size);
+
+        IFilter Dilate = new FilterDilate(size);
+
+        IFilter Grayscale = new FilterGrayscale();
+
+        ArrayList<ImageLog> value_filter = new ArrayList<>();
+
 
         switch (filter_fonction)
         {
-            case "FilterBlur" :
+            case 1 :
+                for (int i =0;i<imageFilter.size();i++) {
+                    Mat test = Grayscale.filter_function(imageFilter.get(i).getMatImage());
+                    System.out.println("ici "+i);
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    value_filter.add(finish);
+                }
+                testtools.GestionFileFilter(value_filter);
+                break;
 
+            case 2 :
 
-                IFilter Blur = new FilterBlur(size);
+                for (int i =0;i<imageFilter.size();i++) {
+                    Mat test = Dilate.filter_function(imageFilter.get(i).getMatImage());
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    value_filter.add(finish);
+                }
+                testtools.GestionFileFilter(value_filter);
+                break;
+
+            case 3 :
 
                 for (int i =0;i<imageFilter.size();i++){
 
-                    Mat imagefinition = Blur.filter_function(this.filter.OpenImage(imageFilter.get(i).getNameFile()));
-
-
-                    ImageLog take_image = new ImageLog(imageFilter.get(i).getName(),imagefinition);
-
-                    this.imageFilter.add(take_image);
-
+                    Mat test = Blur.filter_function(imageFilter.get(i).getMatImage());
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test);
+                    value_filter.add(finish);
 
                 }
-
-                ToolsGestion testtools = new ToolsGestion();
-
-                testtools.GestionFileFilter(this.imageFilter);
-
+                testtools.GestionFileFilter(value_filter);
                 break;
+
             default:
                 throw new Exception("mauvais choix");
         }
