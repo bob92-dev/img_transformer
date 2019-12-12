@@ -8,6 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Gradle: commons-cli:commons-cli:1.4" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacv-platform:1.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:javacv:1.5.2" level="project" />
     <orderEntry type="library" name="Gradle: org.bytedeco:flandmark-platform:1.07-1.5.2" level="project" />

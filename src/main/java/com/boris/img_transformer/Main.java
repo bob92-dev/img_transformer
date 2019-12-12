@@ -1,14 +1,60 @@
 package com.boris.img_transformer;
 
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.Options;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 
 public class Main {
 
 
     public static void main(String[] args) throws Exception,FormatException,FilterException {
+
+
+        // story 6 : ETAPE 1 : CLI => creation des options
+        Options options = new Options();
+        options.addOption("h",false, "help");
+        options.addOption("i",true, "input <directory>");
+        options.addOption("o","ouput -dir",true, "output <directory>");
+
+
+
+        // story 6 : ETAPE 2 : creation du parseur
+        CommandLineParser parser = new DefaultParser();
+        CommandLine cmd = parser.parse(options,args);
+
+        //story 6 : ETAPE 3 : récupération et traitement des résultats
+
+        if(cmd.hasOption("h")) {
+            System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
+
+        }
+        else {
+            System.out.println("this is a test command");
+
+        }
+
+        if (cmd.hasOption("i")){
+
+            // on récupére l'argument passé
+            //cmd.getArgs();
+            // on l'imprime pour le test
+            System.out.println(Arrays.toString(cmd.getOptions()));
+            System.out.println(cmd.getArgs());
+
+            // on remplace le dossier d'input par cet argument
+
+
+        }
+
+
+
+
 
 
 /*
