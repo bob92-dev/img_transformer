@@ -54,6 +54,7 @@ public class Main {
 
         ArrayList<ImageLog> value = testDeDossier.GestionFileRessource(path_input);
 
+/*
         String imageTest = value.get(0).getNameStringFile();
 
         System.out.println(imageTest);
@@ -116,6 +117,7 @@ public class Main {
         // image recording
 
         recupeImage3.create_In_Directory(FilteredDilate,imageTest,path_output);
+*/
 
 
 //===================================================================================
@@ -123,13 +125,15 @@ public class Main {
         // STORY 5
 
 
-        ImageFilter filtertest = new ImageFilter(31,value,1,path_output);
+        //ImageFilter filtertest = new ImageFilter(31,value,1,path_output);
 
 
         //ImageFilter filtertest1 = new ImageFilter(8,value,2, path_output);
 
 
         //ImageFilter filtertest2 = new ImageFilter(31,value,3, path_output);
+
+        ImageFilter filtertest2 = new ImageFilter(31,value,4, path_output);
 
 
     }

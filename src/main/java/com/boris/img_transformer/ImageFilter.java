@@ -18,6 +18,8 @@ public class ImageFilter {
 
         ToolsGestion testtools = new ToolsGestion();
 
+        IFilter Team = new FilterTeam();
+
         IFilter Blur = new FilterBlur(size);
 
         IFilter Dilate = new FilterDilate(size);
@@ -67,7 +69,18 @@ public class ImageFilter {
                 }
                 testtools.GestionFileFilter(value_filter,path_output);
                 break;
-            
+
+            case 4:
+                for (int i =0;i<imageFilter.size();i++){
+
+                    Mat test = Team.filter_function(imageFilter.get(i).getMatImage());
+                    ImageLog finish =new ImageLog(imageFilter.get(i).getFileName(),test,"Team");
+                    valuefilterforpicture.checkLog(finish);
+                    value_filter.add(finish);
+
+                }
+                testtools.GestionFileFilter(value_filter,path_output);
+                break;
             default:
                 throw new Exception("This choice doesn't exist. Please type a number betweeen 1 and 3");
         }
