@@ -4,11 +4,15 @@ import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
 
+/**
+ * In a directory, it takes all the images and applies a filter (of your choice).
+ */
+
 public class ImageFilter {
 
     private ToolsGestion filter=new ToolsGestion();
 
-    public ImageFilter( int size, ArrayList<ImageLog> imageFilter, int filter_fonction) throws Exception {
+    public ImageFilter( int size, ArrayList<ImageLog> imageFilter, int filter_fonction, String path_output) throws Exception {
 
 
         ToolsGestion testtools = new ToolsGestion();
@@ -23,7 +27,9 @@ public class ImageFilter {
 
         ArrayList<ImageLog> value_filter = new ArrayList<>();
 
-
+        /**
+         *
+         */
         switch (filter_fonction)
         {
             case 1 :
@@ -34,7 +40,7 @@ public class ImageFilter {
                     value_filter.add(finish);
                 }
 
-                testtools.GestionFileFilter(value_filter);
+                testtools.GestionFileFilter(value_filter,path_output);
                 break;
 
             case 2 :
@@ -45,7 +51,7 @@ public class ImageFilter {
                     valuefilterforpicture.checkLog(finish);
                     value_filter.add(finish);
                 }
-                testtools.GestionFileFilter(value_filter);
+                testtools.GestionFileFilter(value_filter,path_output);
                 break;
 
             case 3 :
@@ -58,11 +64,11 @@ public class ImageFilter {
                     value_filter.add(finish);
 
                 }
-                testtools.GestionFileFilter(value_filter);
+                testtools.GestionFileFilter(value_filter,path_output);
                 break;
 
             default:
-                throw new Exception("mauvais choix");
+                throw new Exception("This choice doesn't exist. Please type a number betweeen 1 and 3");
         }
 
 

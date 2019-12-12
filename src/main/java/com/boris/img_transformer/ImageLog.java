@@ -6,6 +6,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * This class allow us to reach all the caracteristics (filename etc.) of a picture.
+ */
+
 public class ImageLog {
 
     private File fileName;

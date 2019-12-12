@@ -4,123 +4,55 @@ import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Map;
 
 public class Main {
 
-
-    public static void main(String[] args) throws Exception, FormatException, FilterException {
-
+    public static void main(String[] args) throws Exception,FormatException,FilterException {
 
 
 
+        // path initalization
+        String path_input = null;
+        String path_output = null;
 
 
+        // story #6 : Step 1 => CLI => creation of the options
         Options options = new Options();
         options.addOption("h",false, "help");
-        options.addOption("i",true, "input <directory>");
-        options.addOption("o","ouput -dir",false, "output <directory>");
-
-
-        // story 6 : ETAPE 2 : creation du parseur
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = parser.parse(options,args);
-
-
-
-        //story 6 : ETAPE 3 : récupération et traitement des résultats
-
-        if(cmd.hasOption("h")) {
-            System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
-
-        }
-        if (cmd.hasOption("i")){
-            System.out.println("this is a test command "+ cmd.getOptionValues("i"));
-
-        }
-
-
-
-
-        Options options = new Options();
-
-        options.addOption("h", false, "help");
-        options.addOption("i", true, "input <directory>");
-        options.addOption("o", "ouput -dir", true, "output <directory>");
-
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd = parser.parse(options,args);
-
-        System.out.println((cmd.getOptionValue("i")));
-
-
-
-        switch (cmd.) {
-            default:
-                System.out.println("echec");
-
-            case "h":
-
-                System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
-
-                break;
-
-            case "i":
-                System.out.println("i");
-                break;
-
-            case "o":
-                System.out.println("o");
-                break;
-
-        }
-
-    }
-
-
-
-
-        // story 6 : ETAPE 1 : CLI => creation des options
-        Options options = new Options();
-        options.addOption("h",false, "help");
-        options.addOption("i",true, "input <directory>");
+        options.addOption("i","input -dir",true, "input <directory>");
         options.addOption("o","ouput -dir",true, "output <directory>");
 
 
-        // story 6 : ETAPE 2 : creation du parseur
+        // story #6 : Step 2 : introduction of our parser
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse(options,args);
 
-        //story 6 : ETAPE 3 : récupération et traitement des résultats
+        //story #6 : Step 3 : dealing with results
 
         if(cmd.hasOption("h")) {
-            System.out.println("This is the help option of our programm. Press i to change the input dircetory. Press o to change the out directory ");
-
-        }
-        else {
-            System.out.println("this is a test command");
-
+            System.out.println("This is the help option of our programm" +
+                    "Enter -i to change the input directory. " +
+                    "Enter -o to change the output directory ");
         }
 
         if (cmd.hasOption("i")){
 
-            // on récupére l'argument passé
-            //cmd.getArgs();
-            // on l'imprime pour le test
-            System.out.println(Arrays.toString(cmd.getOptions()));
-            System.out.println(cmd.getArgs());
-
-            // on remplace le dossier d'input par cet argument
-
+            path_input = cmd.getOptionValue("i");
 
         }
 
+        if (cmd.hasOption("o")){
+            path_output = cmd.getOptionValue("o");
+        }
 
+        ToolsGestion testDeDossier = new ToolsGestion();
 
-
-
+        ArrayList<ImageLog> value = testDeDossier.GestionFileRessource(path_input);
 
 
        ToolsGestion recupeImage = new ToolsGestion();
@@ -130,7 +62,7 @@ public class Main {
        //STORY 1
 
         //openImage
-       Mat Imageopened = recupeImage.OpenImage("antoine");
+       Mat Imageopened = recupeImage.OpenImage(value.get(O).getNameStringFile(),path_input);
 
        // filtre noir blanc
 
@@ -139,7 +71,7 @@ public class Main {
 
         // image recording
 
-        recupeImage.create_In_Directory(FilteredImage,"antoine_N_B");
+        recupeImage.create_In_Directory(FilteredImage,"antoine_N_B", path_output);
 
         // STORY 2
 
@@ -149,7 +81,7 @@ public class Main {
 
         //openImage
 
-        Mat Imageopened2 = recupeImage2.OpenImage("ted");
+        Mat Imageopened2 = recupeImage2.OpenImage("ted", path_input);
 
         // filtre noir blanc
 
@@ -157,7 +89,7 @@ public class Main {
 
         // image recording
 
-        recupeImage2.create_In_Directory(FilteredBlur,"ted_Blur");
+        recupeImage2.create_In_Directory(FilteredBlur,"ted_Blured", path_output);
 
 
         // STORY 3
@@ -168,7 +100,7 @@ public class Main {
 
         //openImage
 
-        Mat Imageopened3 = recupeImage2.OpenImage("image 33");
+        Mat Imageopened3 = recupeImage2.OpenImage("image 33",path_input);
 
         // filtre dilate
 
@@ -176,7 +108,7 @@ public class Main {
 
         // image recording
 
-        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate");*/
+        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate",path_output);
 
 
 //===================================================================================
@@ -184,17 +116,21 @@ public class Main {
         // STORY 5
 
 
-        //ToolsGestion testDeDossier = new ToolsGestion();
+        ToolsGestion testDeDossier = new ToolsGestion();
 
-        // ArrayList<ImageLog> value = testDeDossier.GestionFileRessource();
-
-        // ImageFilter filtertest = new ImageFilter(31, value, 1);
+        ArrayList<ImageLog> value = testDeDossier.GestionFileRessource(path_input);
 
 
-        //ImageFilter filtertest1 = new ImageFilter(8,value,2);
+        ImageFilter filtertest = new ImageFilter(31,value,1,path_output);
 
 
-        //ImageFilter filtertest2 = new ImageFilter(31,value,3);
+        //ImageFilter filtertest1 = new ImageFilter(8,value,2, path_output);
+
+
+        //ImageFilter filtertest2 = new ImageFilter(31,value,3, path_output);
+
+
 
 
     }
+}
