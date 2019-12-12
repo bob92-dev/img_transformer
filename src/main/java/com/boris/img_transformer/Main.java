@@ -54,15 +54,22 @@ public class Main {
 
         ArrayList<ImageLog> value = testDeDossier.GestionFileRessource(path_input);
 
+        String imageTest = value.get(0).getNameStringFile();
+
+        System.out.println(imageTest);
 
        ToolsGestion recupeImage = new ToolsGestion();
 
        IFilter Story1_noir_blanc = new FilterGrayscale();
 
+        System.out.println(value);
+
+
+
        //STORY 1
 
         //openImage
-       Mat Imageopened = recupeImage.OpenImage(value.get(O).getNameStringFile(),path_input);
+       Mat Imageopened = recupeImage.OpenImage(imageTest,path_input);
 
        // filtre noir blanc
 
@@ -71,7 +78,7 @@ public class Main {
 
         // image recording
 
-        recupeImage.create_In_Directory(FilteredImage,"antoine_N_B", path_output);
+        recupeImage.create_In_Directory(FilteredImage,imageTest, path_output);
 
         // STORY 2
 
@@ -81,7 +88,7 @@ public class Main {
 
         //openImage
 
-        Mat Imageopened2 = recupeImage2.OpenImage("ted", path_input);
+        Mat Imageopened2 = recupeImage2.OpenImage(imageTest, path_input);
 
         // filtre noir blanc
 
@@ -89,7 +96,7 @@ public class Main {
 
         // image recording
 
-        recupeImage2.create_In_Directory(FilteredBlur,"ted_Blured", path_output);
+        recupeImage2.create_In_Directory(FilteredBlur,imageTest, path_output);
 
 
         // STORY 3
@@ -100,7 +107,7 @@ public class Main {
 
         //openImage
 
-        Mat Imageopened3 = recupeImage2.OpenImage("image 33",path_input);
+        Mat Imageopened3 = recupeImage2.OpenImage(imageTest,path_input);
 
         // filtre dilate
 
@@ -108,17 +115,12 @@ public class Main {
 
         // image recording
 
-        recupeImage3.create_In_Directory(FilteredDilate,"image 33_dilate",path_output);
+        recupeImage3.create_In_Directory(FilteredDilate,imageTest,path_output);
 
 
 //===================================================================================
 
         // STORY 5
-
-
-        ToolsGestion testDeDossier = new ToolsGestion();
-
-        ArrayList<ImageLog> value = testDeDossier.GestionFileRessource(path_input);
 
 
         ImageFilter filtertest = new ImageFilter(31,value,1,path_output);
@@ -128,8 +130,6 @@ public class Main {
 
 
         //ImageFilter filtertest2 = new ImageFilter(31,value,3, path_output);
-
-
 
 
     }

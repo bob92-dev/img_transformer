@@ -1,5 +1,6 @@
 package com.boris.img_transformer;
 
+import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class ImageFilter {
                 }
                 testtools.GestionFileFilter(value_filter,path_output);
                 break;
-
+            
             default:
                 throw new Exception("This choice doesn't exist. Please type a number betweeen 1 and 3");
         }

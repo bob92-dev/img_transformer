@@ -73,7 +73,8 @@ public class ToolsGestion {
         ArrayList<ImageLog> Imagelog =new  ArrayList<>();
 
     // check existence of discovery
-        File fileDosRec = new File("src/"+path_input);
+       // File fileDosRec = new File("src/"+path_input+"/");
+        File fileDosRec = new File("src/ImageRessource/");
 
         if (!fileDosRec.exists()) {
 
@@ -114,7 +115,7 @@ public class ToolsGestion {
     public Mat OpenImage(String name, String path_input) throws FormatException {
         try{
             // open file in src/ImageRessource/+ name + ".jpg
-            File f = new File("src/" + path_input +"/"+ name + ".jpg");
+            File f = new File("src/" + path_input +"/"+ name);
 
             if(!f.exists()){
                 throw new FormatException(" this image isn'it exist :"+f.getAbsolutePath());
@@ -139,20 +140,20 @@ public class ToolsGestion {
 
 
         // create a new path for the file destination
-        File outputDir = new File("src/"+path_output);
+        File outputDir = new File("src/"+path_output+"/");
 
         try{
             // dans la nouveau dossier, il enregistre le fichioer de sortie( apres application du filtre)
             // en deuxiéme argument le nom du nouveau fichier
 
-            File outputFile = new File(outputDir, name_file+".jpg");
+            File outputFile = new File(outputDir, name_file);
 
             //ensuite il écrit le chemin absolu, et l'image
 
             opencv_imgcodecs.imwrite(outputFile.getAbsolutePath(), image);
 
         }catch (Exception e ){
-            throw new FormatException("This is a format exception. Try later !");
+            throw new FormatException("This is a format exception. Try later !"+" = "+ image +" name "+name_file);
         }
 
     }

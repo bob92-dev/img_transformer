@@ -25,7 +25,7 @@ public class LogInformation {
 
             writefile.write("\n");
 
-            writefile.write("this name picture is : "+ namePicture +" and filter in place : "+filterOfThis);
+            writefile.write("this name of picture is : "+ namePicture +" and use the filter  : "+filterOfThis);
 
             writefile.close();
 
@@ -37,7 +37,7 @@ public class LogInformation {
 
             writefile.write("\n");
 
-            writefile.write("this name picture is : "+namePicture+" and filter in place : "+filterOfThis);
+            writefile.write("the name of  picture is : "+namePicture+" and use the filter : "+filterOfThis);
 
             writefile.close();
 
