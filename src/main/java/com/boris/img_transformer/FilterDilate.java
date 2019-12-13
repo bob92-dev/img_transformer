@@ -15,6 +15,12 @@ public class FilterDilate implements IFilter{
         this.size=size;
     }
 
+    /**
+     * The dilate filter
+     * @param image take an image and apply the filter
+     * @return return the result of the filtered image
+     * @throws FilterException
+     */
     public Mat filter_function(Mat image) throws FilterException {
         try {
 

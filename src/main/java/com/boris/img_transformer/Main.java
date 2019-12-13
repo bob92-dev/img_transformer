@@ -11,7 +11,13 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class Main {
-
+    /**
+     * the main class, with the commands(help, output and input)
+     * @param args
+     * @throws Exception
+     * @throws FormatException
+     * @throws FilterException
+     */
     public static void main(String[] args) throws Exception,FormatException,FilterException {
 
 

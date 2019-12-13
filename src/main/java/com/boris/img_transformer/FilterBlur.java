@@ -13,6 +13,12 @@ public class FilterBlur implements IFilter {
         this.size=size;
     }
 
+    /**
+     * the blur filter
+     * @param image take an image and apply the filter
+     * @return the result of the filtered image
+     * @throws FilterException
+     */
     public Mat filter_function(Mat image) throws FilterException {
 
         try{

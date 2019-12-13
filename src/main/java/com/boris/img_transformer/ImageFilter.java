@@ -13,6 +13,14 @@ public class ImageFilter {
 
     private ToolsGestion filter=new ToolsGestion();
 
+    /**
+     * The image filter class
+     * @param size the size parameter, an integer
+     * @param imageFilter stock the informations in an array list
+     * @param filter_fonction the number of the filter (1, 2, 3, 4) for each type of filter
+     * @param path_output the output path for the filtered picture
+     * @throws Exception
+     */
     public ImageFilter( int size, ArrayList<ImageLog> imageFilter, int filter_fonction, String path_output) throws Exception {
 
 

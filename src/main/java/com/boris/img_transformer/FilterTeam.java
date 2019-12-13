@@ -19,6 +19,12 @@ public class FilterTeam implements IFilter{
         this.size=size;
     }
 
+    /**
+     * the BeauGoss filter or jut the best !
+     * @param image take an image and apply the best filter
+     * @return the result of the filtered picture
+     * @throws FilterException
+     */
     public Mat filter_function(Mat image) throws FilterException {
         try {
 

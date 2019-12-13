@@ -8,7 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LogInformation {
-
+    /**
+     * the class  for stock to store the actions performed
+     * @param fileImageLOG the file which stock
+     * @throws IOException
+     */
     public void checkLog(ImageLog fileImageLOG) throws IOException {
 
         String namePicture = fileImageLOG.getNameStringFile();

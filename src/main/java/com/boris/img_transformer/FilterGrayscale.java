@@ -7,7 +7,12 @@ import org.opencv.imgproc.Imgproc;
 import static org.bytedeco.opencv.global.opencv_imgproc.cvtColor;
 
 public class FilterGrayscale implements IFilter{
-
+    /**
+     * the grayscale filter
+     * @param image take an image and apply the filter
+     * @return the result of the filtered image
+     * @throws FilterException
+     */
     public Mat filter_function(Mat image) throws FilterException {
 
         try{
